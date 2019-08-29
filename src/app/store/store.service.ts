@@ -1,7 +1,7 @@
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Repos } from '../repos/shared/Repos';
 import { StoreEvent } from './store-event';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 export interface State {
   repos: Repos;
@@ -19,7 +19,8 @@ export class Store {
   private store: BehaviorSubject<State> = new BehaviorSubject<State>(initialState);
   private store$: Observable<State> = this.store
     .asObservable()
-    .distinctUntilChanged();
+    .pipe(distinctUntilChanged())
+
 
   observe(): Observable<State> {
     return this.store$;

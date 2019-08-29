@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, State } from '../store/store.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ReposService } from './shared/repos.service';
 import { Repo } from './shared/Repo';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-repos',
@@ -30,16 +31,16 @@ export class ReposComponent implements OnInit {
 
   ngOnInit() {
     this.repos$ = this.store.observe()
-      .map((state: State) => state.repos.repos);
+      .pipe(map((state: State) => state.repos.repos));
 
     this.isLoading$ = this.store.observe()
-      .map((state: State) => state.repos.isLoading);
+      .pipe(map((state: State) => state.repos.isLoading));
 
     this.hasError$ = this.store.observe()
-      .map((state: State) => state.repos.hasError);
+      .pipe(map((state: State) => state.repos.hasError));
 
     this.reposNumber$ = this.store.observe()
-      .map((state: State) => state.repos.repos.length);
+      .pipe(map((state: State) => state.repos.repos.length));
   }
 
   getRepos() {
