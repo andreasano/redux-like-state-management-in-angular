@@ -1,8 +1,9 @@
-## The Developer's Guide to Redux-like State Management in Angular while keeping it a Secret
+## Redux-like State Management in Angular 8+
 
-### While keeping it a secret
 
-**by Daniel Dughila [@danielDughy](https://twitter.com/danielDughy)**
+Thanks for Daniel Dughila [@danielDughy](https://twitter.com/danielDughy) to have started this project!
+
+His articles:
 
 [Demo](https://intojs.github.io/redux-like-state-management-in-angular/)
 
